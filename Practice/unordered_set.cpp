@@ -16,16 +16,20 @@
 // }
 
 #include<iostream>
-#include<unordered_set>
+#include<set>
 #include<vector>
 #include<string>
 using namespace std;
 int main(){
-    unordered_set<int> uset;
+    set<int> uset; //ascending order. normal default
+    set<int, greater<int>> uset; //descending order set
     vector<int> v1 = {1, 2, 4, 6, 2, 2, 3, 1, 4, 5};
     for(auto vec : v1){
         uset.insert(vec);
     }
     cout<<uset.size();
+    for(auto it: uset){
+        cout<<it<<",  ";
+    }
 }
 
