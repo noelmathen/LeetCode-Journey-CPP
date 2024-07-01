@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;      
 
 int main()
@@ -36,6 +37,40 @@ int main()
     // {
     //     cout<<i<<endl;
     // }
+
+
+
+    vector<int> v1 = {1, 3, 2, 4, 6, 5};
+    cout<<v1.size();
+    for(auto i:v1){
+        cout<<i;
+    }
+
+    cout<<endl;
+    sort(v1.begin(), v1.end(), greater<int>());
+    for(auto i:v1){
+        cout<<i;
+    }
+    
+    cout<<endl;
+    cout<<*max_element(v1.begin(), v1.end());
+
+    cout<<endl;
+    vector<int> v2;
+    for(int i=0; i<10; i++){
+        v2.push_back(i);
+    }
+    cout<<endl;
+    for(auto i:v2){
+        cout<<i;
+    }
+
+    cout<<endl;
+    for(auto it=v2.begin(); it!=v2.end(); ++it){
+        cout<<' '<<*it;
+    }
+
+
     return 0;
 }
 
