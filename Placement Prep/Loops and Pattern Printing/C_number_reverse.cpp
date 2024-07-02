@@ -4,11 +4,15 @@ using namespace std;
 int main(){
     int n, num=0;
     cin>>n;
-    while(n>0){
-        num= num*10 + (n%10);
-        n/=10;
+    int x=abs(n);
+    while(x!=0){
+        num= num*10 + (x%10);
+        x/=10;
     }
-    cout<<num;
+    if (n<0)
+        cout<<num*(-1)<<endl;
+    else
+        cout<<num<<endl;
 
     return 0;
 }
