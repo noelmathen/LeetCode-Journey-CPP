@@ -51,6 +51,15 @@
         "xutility": "cpp",
         "map": "cpp",
         "bitset": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "ranges": "cpp",
+        "set": "cpp",
+        "span": "cpp",
+        "stack": "cpp",
+        "unordered_map": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp"
     }
 }
