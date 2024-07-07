@@ -21,7 +21,7 @@ int main(){
 
     auto found = newmap.find(9);
     if(found != newmap.end())
-        cout<<"Element found"<<endl;
+        cout<<"Element foundd"<<endl;
     else
         cout<<"Element not found"<<endl;
 }
