@@ -19,9 +19,9 @@ int main(){
         cout<<itr->first<<" -> "<<itr->second<<endl;
     }
 
-    auto found = newmap.find(9);
+    auto found = newmap.find(2);
     if(found != newmap.end())
-        cout<<"Element foundd"<<endl;
+        cout<<"Element foundd"<<found->first<<" "<<found->second<<endl;
     else
         cout<<"Element not found"<<endl;
 }
