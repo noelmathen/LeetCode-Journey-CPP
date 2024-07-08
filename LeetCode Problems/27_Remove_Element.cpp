@@ -46,3 +46,17 @@ public:
 
 // nums[index] = nums[i]; This line copies the current valid element (nums[i]) to the index position in the array. This effectively shifts the valid elements to the beginning.
 // index++; The index variable is incremented to point to the next position where a valid element should be placed.
+
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int j=0;
+        for(int i=0; i<nums.size(); i++){
+            if(nums.at(i)!=val){
+                nums.at(j++) = nums.at(i);
+            }
+        }
+        return j;
+    }
+};
