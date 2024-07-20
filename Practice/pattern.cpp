@@ -152,34 +152,34 @@
 using namespace std;
 
 int main(){
-    int n=4;
+    int n=6;
     for(int i=1; i<=n; i++){
         for(int j=1; j<i; j++){
             cout<<n-j+1;
         }
-        for(int j=i; j<=n; j++){
+        for(int j=i; j<n; j++){
             cout<<n-i+1;
         }
-        for(int j=i; j<=n+1; j++){
+        for(int j=i; j<n+1; j++){
             cout<<n-i+1;
         }
         for(int j=1; j<i; j++){
-            cout<<n-j+1;
+            cout<<n-i+j+1;
         }
         cout<<"\n";
     }
-    for(int i=1; i<=n; i++){
-        for(int j=i; j<=n; j++){
-            cout<<;
-        }
-        for(int j=1; j<=i; j++){
-            cout<<" ";
+    for(int i=2; i<=n; i++){
+        for(int j=i; j<n; j++){
+            cout<<n-j+i;
         }
         for(int j=1; j<i; j++){
-            cout<<" ";
+            cout<<i;
+        }
+        for(int j=1; j<i; j++){
+            cout<<i;
         }
         for(int j=i; j<=n; j++){
-            cout<<"*";
+            cout<<j;
         }
         cout<<"\n";
     }
