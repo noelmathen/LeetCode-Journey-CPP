@@ -83,29 +83,94 @@
 
 
 
+// #include<iostream>
+// using namespace std;
+
+// int main(){
+//     int n=6;
+//     for(int i=1; i<=n; i++){
+//         for(int j=1; j<i; j++){
+//             cout<<"*";
+//         }
+//         for(int j=i; j<=n; j++){
+//             cout<<" ";
+//         }
+//         for(int j=i; j<=n+1; j++){
+//             cout<<" ";
+//         }
+//         for(int j=1; j<i; j++){
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+//     }
+//     for(int i=1; i<=n; i++){
+//         for(int j=i; j<=n; j++){
+//             cout<<"*";
+//         }
+//         for(int j=1; j<=i; j++){
+//             cout<<" ";
+//         }
+//         for(int j=1; j<i; j++){
+//             cout<<" ";
+//         }
+//         for(int j=i; j<=n; j++){
+//             cout<<"*";
+//         }
+//         cout<<"\n";
+//     }
+//     return 0;
+// }
+
+
+
+// #include<iostream>
+// using namespace std;
+
+// int main(){
+//     int n=4;
+//     for(int i=1; i<=n; i++){
+//         for(int j=1; j<=i; j++){
+//             cout<<n-j+1;
+//         }
+//         cout<<"\n";
+//     }
+//     for(int i=1; i<=n; i++){
+//         for(int j=i; j<=n; j++){
+//             cout<<i;
+//         }
+//         cout<<"\n";
+//     }
+    
+
+//     return 0;
+// }
+
+
+
+
 #include<iostream>
 using namespace std;
 
 int main(){
-    int n=6;
+    int n=4;
     for(int i=1; i<=n; i++){
         for(int j=1; j<i; j++){
-            cout<<"*";
+            cout<<n-j+1;
         }
         for(int j=i; j<=n; j++){
-            cout<<" ";
+            cout<<n-i+1;
         }
         for(int j=i; j<=n+1; j++){
-            cout<<" ";
+            cout<<n-i+1;
         }
         for(int j=1; j<i; j++){
-            cout<<"*";
+            cout<<n-j+1;
         }
         cout<<"\n";
     }
     for(int i=1; i<=n; i++){
         for(int j=i; j<=n; j++){
-            cout<<"*";
+            cout<<;
         }
         for(int j=1; j<=i; j++){
             cout<<" ";
@@ -120,6 +185,3 @@ int main(){
     }
     return 0;
 }
-
-
-
