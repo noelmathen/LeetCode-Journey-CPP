@@ -24,4 +24,6 @@ int main(){
         cout<<"Element foundd"<<found->first<<" "<<found->second<<endl;
     else
         cout<<"Element not found"<<endl;
+
+    //in map, we can do map1==map2 two compare two maps(both key and value should be same)
 }
