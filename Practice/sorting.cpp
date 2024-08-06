@@ -27,6 +27,17 @@ void bubble_sort(vector<int>& arr){
     }
 }
 
+void insertion_sort(vector<int>& arr){
+    int n=arr.size(), j;
+    for(int i=1; i<n; i++){
+        j=i;
+        while(j>0 && arr[j]<arr[j-1]){
+            swap(arr[j], arr[j-1]);
+            j--;
+        }
+    }
+}
+
 int main(){
     int n, min, x;
     vector<int> arr;
@@ -38,7 +49,8 @@ int main(){
     }
 
     // selection_sort(arr);
-    bubble_sort(arr);
+    // bubble_sort(arr);
+    insertion_sort(arr);
 
     
 
