@@ -1,18 +1,31 @@
-//OPTIMAL SOLUTION(I DID THIS THANNE MUHUHUHUHUHAHAHAHAH)
+//OPTIMAL SOLUTION - Single pass, minimum value tracking solution
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int n=prices.size(), maxProfit=0, l=0, r=1, profit=0;
-        while(r<n){
-            if(prices[r]<=prices[l])
-                l=r;
-            else
-                maxProfit = max(maxProfit, prices[r]-prices[l]);
-            r++;
+        int n=prices.size(), maxProfit=0, minPrice=INT_MAX, profit=0;
+        for(int i=0; i<n; i++){
+            minPrice = min(minPrice, prices[i]);
+            maxProfit = max(maxProfit, prices[i]-minPrice);
         }
         return maxProfit;
     }
 };
+
+// //OPTIMAL SOLUTION - Two pointer
+// class Solution {
+// public:
+//     int maxProfit(vector<int>& prices) {
+//         int n=prices.size(), maxProfit=0, l=0, r=1, profit=0;
+//         while(r<n){
+//             if(prices[r]<=prices[l])
+//                 l=r;
+//             else
+//                 maxProfit = max(maxProfit, prices[r]-prices[l]);
+//             r++;
+//         }
+//         return maxProfit;
+//     }
+// };
 
 
 // //BRUTE FORCE SOLUTION
