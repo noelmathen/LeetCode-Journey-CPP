@@ -1,36 +1,50 @@
-//My solution 
+//My solution - 1
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int n=prices.size(), maxProfit=0, minPrice=INT_MAX, totalProfit=0;
-        for(int i=0; i<n; i++){
-            minPrice = min(minPrice, prices[i]);
-            maxProfit = max(maxProfit, prices[i]-minPrice);
-            totalProfit += maxProfit;
-            maxProfit = 0;
-            minPrice = prices[i];
+        int n = prices.size(), hold = INT_MIN, cash = 0;        
+        for (int i = 0; i < n; ++i) {
+            hold = max(hold, cash - prices[i]); // Update hold state
+            cash = max(cash, hold + prices[i]); // Update cash state
         }
-        return totalProfit;
-
+        return cash;
     }
 };
 
-// //Prinzinte Solution
+
+// //My solution - 2
 // class Solution {
-//   public:
-//     int stockBuyAndSell(int n, vector<int> &prices) {
-//         int min=prices[0],max=0,profit=0,i=1,index=-1;
-//         while(i<n){
-//             if(prices[i]<min)
-//                 min=prices[i];
-//             else if(prices[i]-min>max){
-//                 max=prices[i]-min;
-//                 profit+=max;
-//                 min=prices[i];
-//                 max=0;
+// public:
+//     int maxProfit(vector<int>& prices) {
+//         int n=prices.size(), maxProfit=0, minPrice=INT_MAX, totalProfit=0;
+//         for(int i=0; i<n; i++){
+//             if(prices[i]<minPrice)
+//                 minPrice = prices[i];
+//             else if(prices[i]-minPrice > maxProfit){
+//                 maxProfit = prices[i]-minPrice;
+//                 totalProfit += (maxProfit);
+//                 maxProfit = 0;
+//                 minPrice = prices[i];
 //             }
-//             i++;
+                
 //         }
-//         return profit;
-//     }
+//         return totalProfit;
+//     }
+// };
+
+// //My solution - 3
+// class Solution {
+// public:
+//     int maxProfit(vector<int>& prices) {
+//         int n=prices.size(), maxProfit=0, minPrice=INT_MAX, totalProfit=0;
+//         for(int i=0; i<n; i++){
+//             minPrice = min(minPrice, prices[i]);
+//             maxProfit = max(maxProfit, prices[i]-minPrice);
+//             totalProfit += maxProfit;
+//             maxProfit = 0;
+//             minPrice = prices[i];
+//         }
+//         return totalProfit;
+
+//     }
 // };
