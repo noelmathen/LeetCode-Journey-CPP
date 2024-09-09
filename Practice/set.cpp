@@ -10,6 +10,7 @@ int main(){
     for(auto i:set1){
         cout<<i<<" ";
     }
+    cout<<endl<<*set1.begin()<<" "<<*prev(set1.end())<<endl;
 
     cout<<endl;
     set<int, greater<int>> set2(set1.begin(), set1.end()); //copysing elements of set to another
@@ -17,7 +18,6 @@ int main(){
     for(auto i:set2){
         cout<<i<<" ";
     }
-
     cout<<endl<<"Size of set1: "<<set1.size()<<endl;
     std::cout << "Is set empty? " << (set2.empty() ? "Yes" : "No") << std::endl;
 
