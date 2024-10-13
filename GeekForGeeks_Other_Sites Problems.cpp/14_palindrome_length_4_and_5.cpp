@@ -15,14 +15,14 @@ bool isPalindrome(string s){
 int calculateScore(string s) {
     int n = s.length();
     int score = 0;
-    for(int i=0; i<n-3; i++){
-        string newString="";
-        for(int j=i; j<n; j++){
-            newString += s[j];
-            if(j-i+1 == 4 && isPalindrome(newString))
-                score += 5;
-            else if(j-i+1 == 5 && isPalindrome(newString))
-                score += 10;
+    for(int i=0; i<=n-4; i++){
+        if(i<=n-4 && isPalindrome(s.substr(i, 4))){
+            cout<<s.substr(i, 4)<<endl;
+            score += 5;
+        }
+        if(i<=n-5 && isPalindrome(s.substr(i, 5))){
+            cout<<s.substr(i, 5)<<endl;
+            score += 10;
         }
     }
     return score;
