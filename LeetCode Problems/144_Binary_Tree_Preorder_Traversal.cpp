@@ -10,6 +10,7 @@
  * };
  */
 
+// // RECURSIVE SOLUTION
 // class Solution{
 //     private:
 //         void preorder(TreeNode* root, vector<int> &result){
@@ -28,26 +29,63 @@
 // 		}
 // };
 
+
+
+// // ITERATIVE SOLUTION
+// class Solution{
+// 	public:
+// 		vector<int> preorderTraversal(TreeNode* root){
+// 	        stack<TreeNode*> stk;
+//             TreeNode* node=root;
+//             vector<int> result;
+//             while(1){
+//                 if(node!=NULL){
+//                     result.push_back(node->val);
+//                     stk.push(node);
+//                     node = node->left;
+//                 }
+//                 else{
+//                     if(stk.empty())
+//                         break;
+//                     node = stk.top();
+//                     stk.pop();
+//                     node = node->right;
+//                 }
+//             }
+//             return result;
+// 		}
+// };
+
+
+
+
+// MORRIS PREORDER TRAVERSAL
 class Solution{
-	public:
-		vector<int> preorderTraversal(TreeNode* root){
-	        stack<TreeNode*> stk;
-            TreeNode* node=root;
-            vector<int> result;
-            while(1){
-                if(node!=NULL){
-                    result.push_back(node->val);
-                    stk.push(node);
-                    node = node->left;
+public:
+    vector<int> preorderTraversal(TreeNode* root){
+        vector<int> preorder;
+        TreeNode* curr = root;
+        while(curr!=NULL){
+            if(curr->left == NULL){
+                preorder.push_back(curr->val);
+                curr = curr->right;
+            }
+            else{
+                TreeNode* next = curr->left;
+                while(next->right && next->right!=curr)
+                    next = next->right;
+                
+                if(next->right==NULL){
+                    next->right = curr;
+                    preorder.push_back(curr->val);
+                    curr = curr->left;
                 }
                 else{
-                    if(stk.empty())
-                        break;
-                    node = stk.top();
-                    stk.pop();
-                    node = node->right;
+                    next->right=NULL;
+                    curr = curr->right;
                 }
             }
-            return result;
-		}
+        }
+        return preorder;
+    }
 };
