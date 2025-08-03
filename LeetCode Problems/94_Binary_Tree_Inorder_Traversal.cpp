@@ -10,6 +10,7 @@
  * };
  */
 
+// // RECURSION BASED
 // class Solution{
 //     private:
 //         void inorder(TreeNode* root, vector<int> &result){
@@ -28,26 +29,60 @@
 // 		}
 // };
 
+
+// // ITERATIVE
+// class Solution{
+// 	public:
+// 		vector<int> inorderTraversal(TreeNode* root){
+// 	        stack<TreeNode*> stk;
+//             TreeNode* node=root;
+//             vector<int> result;
+//             while(1){
+//                 if(node!=NULL){
+//                     stk.push(node);
+//                     node = node->left;
+//                 }
+//                 else{
+//                     if(stk.empty())
+//                         break;
+//                     node = stk.top();
+//                     stk.pop();
+//                     result.push_back(node->val);
+//                     node = node->right;
+//                 }
+//             }
+//             return result;
+// 		}
+// };
+
+
+//MORRIS INORDER
 class Solution{
 	public:
 		vector<int> inorderTraversal(TreeNode* root){
-	        stack<TreeNode*> stk;
-            TreeNode* node=root;
-            vector<int> result;
-            while(1){
-                if(node!=NULL){
-                    stk.push(node);
-                    node = node->left;
+            vector<int> inorder;
+            TreeNode* curr = root;
+            while(curr!=NULL){
+                if(curr->left == NULL){
+                    inorder.push_back(curr->val);
+                    curr = curr->right;
                 }
                 else{
-                    if(stk.empty())
-                        break;
-                    node = stk.top();
-                    stk.pop();
-                    result.push_back(node->val);
-                    node = node->right;
+                    TreeNode* next = curr->left;
+                    while(next->right && next->right!=curr)
+                        next = next->right;
+                    
+                    if(next->right==NULL){
+                        next->right = curr;
+                        curr = curr->left;
+                    }
+                    else{
+                        next->right=NULL;
+                        inorder.push_back(curr->val);
+                        curr = curr->right;
+                    }
                 }
             }
-            return result;
+            return inorder;
 		}
 };
