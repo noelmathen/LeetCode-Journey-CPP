@@ -1,35 +1,55 @@
-//OPTIMAL SOLUTION - Quick Select Parition Algorithm - O(n)
+// //OPTIMAL SOLUTION - Quick Select Parition Algorithm - O(n)
+// class Solution {
+// public:
+//     int partitionAndReturnIndex(vector<int>& nums, int pIndex, int left, int right){
+//         int index = left+1;
+//         swap(nums[left], nums[pIndex]);
+//         for(int i=left+1; i<=right; i++){
+//             if(nums[i] > nums[left]){
+//                 swap(nums[index], nums[i]);
+//                 index++;
+//             }
+//         }
+//         swap(nums[left], nums[index-1]);
+//         return index-1;
+//     }
+
+//     int kthLargestElement(vector<int>& nums, int k) {
+//         int n=nums.size();
+//         int left=0, right=n-1;
+        
+//         while(1){
+//             int pIndex = (rand() % (right-left+1)) + left;
+//             pIndex = partitionAndReturnIndex(nums, pIndex, left, right);
+            
+//             if(pIndex==k-1)
+//                 return nums[pIndex];
+//             else if(pIndex > k-1)
+//                 right = pIndex-1;
+//             else
+//                 left = pIndex+1;
+//         }
+//         return -1;
+//     }
+// };
+
+
+// Kurachoodem better solution? Uses min PQ - N*log(K) TC
 class Solution {
 public:
-    int partitionAndReturnIndex(vector<int>& nums, int pIndex, int left, int right){
-        int index = left+1;
-        swap(nums[left], nums[pIndex]);
-        for(int i=left+1; i<=right; i++){
-            if(nums[i] > nums[left]){
-                swap(nums[index], nums[i]);
-                index++;
-            }
-        }
-        swap(nums[left], nums[index-1]);
-        return index-1;
-    }
 
     int kthLargestElement(vector<int>& nums, int k) {
-        int n=nums.size();
-        int left=0, right=n-1;
-        
-        while(1){
-            int pIndex = (rand() % (right-left+1)) + left;
-            pIndex = partitionAndReturnIndex(nums, pIndex, left, right);
-            
-            if(pIndex==k-1)
-                return nums[pIndex];
-            else if(pIndex > k-1)
-                right = pIndex-1;
-            else
-                left = pIndex+1;
+        priority_queue<int, vector<int>, greater<int>> pq;
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+            if(i<k)
+                pq.push(nums[i]);
+            else if(nums[i] > pq.top()){
+                pq.pop();
+                pq.push(nums[i]);
+            }
         }
-        return -1;
+        return pq.top();
     }
 };
 

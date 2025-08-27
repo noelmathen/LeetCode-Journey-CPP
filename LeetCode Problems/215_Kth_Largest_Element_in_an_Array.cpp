@@ -34,41 +34,61 @@
 // };
 
 
-// BETTER Solution - K*log(N)
+// Kurachoodem better solution? Uses min PQ - N*log(K) TC
 class Solution {
 public:
-    void heapifyDown(vector<int>& nums, int i){
-        int leftChild=2*i+1, rightChild=2*i+2, n=nums.size(), largest=i;
-
-        if(leftChild<n && nums[leftChild] > nums[largest])
-            largest = leftChild;
-        if(rightChild<n && nums[rightChild] > nums[largest])
-            largest = rightChild;
-
-        if(largest != i){
-            swap(nums[largest], nums[i]);
-            heapifyDown(nums, largest);
-        }
-    }
-
-    void getRootElement(vector<int>& nums){
-        swap(nums[0], nums[nums.size()-1]);
-        nums.pop_back();
-        heapifyDown(nums, 0);
-    }
-
-    void buildMaxHeap(vector<int>& nums){
-        for(int i=(nums.size()/2)-1; i>=0; i--){
-            heapifyDown(nums, i);
-        }
-    }
 
     int findKthLargest(vector<int>& nums, int k) {
-        buildMaxHeap(nums);
-
-        for(int i=0; i<k-1; i++){
-            getRootElement(nums);
+        priority_queue<int, vector<int>, greater<int>> pq;
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+            if(i<k)
+                pq.push(nums[i]);
+            else if(nums[i] > pq.top()){
+                pq.pop();
+                pq.push(nums[i]);
+            }
         }
-        return nums[0];
+        return pq.top();
     }
 };
+
+
+// // BETTER Solution - K*log(N)
+// class Solution {
+// public:
+//     void heapifyDown(vector<int>& nums, int i){
+//         int leftChild=2*i+1, rightChild=2*i+2, n=nums.size(), largest=i;
+
+//         if(leftChild<n && nums[leftChild] > nums[largest])
+//             largest = leftChild;
+//         if(rightChild<n && nums[rightChild] > nums[largest])
+//             largest = rightChild;
+
+//         if(largest != i){
+//             swap(nums[largest], nums[i]);
+//             heapifyDown(nums, largest);
+//         }
+//     }
+
+//     void getRootElement(vector<int>& nums){
+//         swap(nums[0], nums[nums.size()-1]);
+//         nums.pop_back();
+//         heapifyDown(nums, 0);
+//     }
+
+//     void buildMaxHeap(vector<int>& nums){
+//         for(int i=(nums.size()/2)-1; i>=0; i--){
+//             heapifyDown(nums, i);
+//         }
+//     }
+
+//     int findKthLargest(vector<int>& nums, int k) {
+//         buildMaxHeap(nums);
+
+//         for(int i=0; i<k-1; i++){
+//             getRootElement(nums);
+//         }
+//         return nums[0];
+//     }
+// };
